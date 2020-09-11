@@ -1,0 +1,23 @@
+{
+	"files.exclude": {
+		"package.json": true,
+		"public": true,
+		"**/db": true,
+		"**/Https": true,
+		"**/util": true,
+		"**/Partials": true,
+		"**/images": true,
+		"*/index.js": true,
+		"*/index.css": true,
+
+		".gitignore": true,
+		".gitattributes": true,
+		"node_modules": true,
+		"yarn.lock": true,
+		"package-lock.json": true,
+		"**/note.txt": true,
+		"ProVersion": true,
+		"README.md": true
+	},
+	"extensions.ignoreRecommendations": true
+}
