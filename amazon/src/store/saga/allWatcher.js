@@ -1,5 +1,5 @@
 import {all} from 'redux-saga/effects';
-import {fetchUserWatcher} from './userSaga';
+import {fetchProductWatcher} from './productSaga';
 export default function* middlewares() {
-	yield all([fetchUserWatcher()]);
+	yield all([fetchProductWatcher()]);
 }

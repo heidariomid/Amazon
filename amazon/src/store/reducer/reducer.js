@@ -1,11 +1,11 @@
-import userReducer from './users/userReducer';
+import userReducer from './products/productReducer';
 
 export const initialState = {
-	users: {items: [], messages: '', hasError: false, errorMessages: ''},
+	products: {items: [], messages: '', hasError: false, errorMessages: ''},
 };
 
 export const reducer = (state = initialState, action) => {
 	return {
-		users: userReducer(state.users, action),
+		products: userReducer(state.products, action),
 	};
 };

@@ -5,23 +5,18 @@ import './style/App.css';
 import {connect} from 'react-redux';
 import Components from './routes/router';
 
-const App = ({fetchUser}) => {
+const App = ({fetchProduct}) => {
 	useEffect(() => {
-		fetchUser({messages: 'Redux is Connected'});
-	}, [fetchUser]);
-	return (
-		<div className="app">
-			Go to <Link to="user">User</Link> Component
-			{Components}
-		</div>
-	);
+		fetchProduct({messages: 'Redux is Connected'});
+	}, [fetchProduct]);
+	return <div className="app">{Components}</div>;
 };
 
 const Dispatch = (dispatch) => {
 	return {
-		fetchUser: (payload) => {
+		fetchProduct: (payload) => {
 			dispatch({
-				type: actions.FETCH_USER,
+				type: actions.FETCH_PRODUCT,
 				payload,
 			});
 		},

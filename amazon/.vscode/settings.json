@@ -9,7 +9,6 @@
 		"**/images": true,
 		"*/index.js": true,
 		"*/index.css": true,
-
 		".gitignore": true,
 		".gitattributes": true,
 		"node_modules": true,

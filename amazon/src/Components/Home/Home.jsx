@@ -1,22 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {actions} from '../../store/actions';
-
-const Home = ({messages}) => {
+import Products from '../Product/Products';
+const Home = () => {
 	return (
 		<div>
-			<h2>Welcom to Home Component</h2>
-			<h3>{messages}</h3>
+			<Products />
 		</div>
 	);
 };
 
-const State = (state) => ({userState: state.users.items, messages: state.users.messages, errorMessages: state.users.errorMessages});
+const State = (state) => ({productState: state.products.items, messages: state.products.messages, errorMessages: state.products.errorMessages});
 const Dispatch = (dispatch) => {
 	return {
-		fetchUser: (payload) => {
+		fetchProduct: (payload) => {
 			dispatch({
-				type: actions.FETCH_USER,
+				type: actions.FETCH_PRODUCT,
 				payload,
 			});
 		},

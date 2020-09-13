@@ -1,5 +1,5 @@
 import NotFound from '../Components/NotFound';
-import Users from '../Components/User/Users';
+import Chekout from '../Components/Basket/Chekout';
 import Home from '../Components/Home/Home';
 const routes = [
 	{
@@ -8,9 +8,9 @@ const routes = [
 		component: Home,
 	},
 	{
-		path: '/user',
+		path: '/chekout',
 		exact: true,
-		component: Users,
+		component: Chekout,
 	},
 	{
 		component: NotFound,
