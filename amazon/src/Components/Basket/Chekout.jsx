@@ -1,21 +1,29 @@
 import React from 'react';
-import '../../style/Basket.css';
+import {checkout, checkout_left, checkout_title, checkout_right} from './Basket.module.css';
 import adBanner from '../../images/ad.gif';
 import {connect} from 'react-redux';
 import SubTotal from './SubTotal';
+import Product from '../Product/Product';
+import Header from '../Header/Header';
 const Chekout = ({basket}) => {
 	return (
-		<div className="checkout">
-			<div className="checkout_left">
-				<img src={adBanner} alt="ad" />
-				<div>
-					<h2 className="checkout_title">Shopping Basket</h2>
+		<>
+			<Header />
+			<div className={checkout}>
+				<div className={checkout_left}>
+					<img src={adBanner} alt="ad" />
+					<div>
+						<h2 className={checkout_title}>Shopping Basket</h2>
+						{basket.map((item) => (
+							<Product checkout id={item.id} title={item.title} image={item.image} price={item.price} star={item.star} />
+						))}
+					</div>
+				</div>
+				<div className={checkout_right}>
+					<SubTotal basket={basket} />
 				</div>
 			</div>
-			<div className="checkout_right">
-				<SubTotal basket={basket} />
-			</div>
-		</div>
+		</>
 	);
 };
 

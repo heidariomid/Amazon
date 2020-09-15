@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import {actions} from './store/actions';
-import './style/App.css';
+import {app} from './App.module.css';
 import {connect} from 'react-redux';
 import Components from './routes/router';
 
@@ -9,7 +8,7 @@ const App = ({fetchProduct}) => {
 	useEffect(() => {
 		fetchProduct({messages: 'Redux is Connected'});
 	}, [fetchProduct]);
-	return <div className="app">{Components}</div>;
+	return <div className={app}>{Components}</div>;
 };
 
 const Dispatch = (dispatch) => {

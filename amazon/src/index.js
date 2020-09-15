@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style/index.css';
+import './index.css';
 import {BrowserRouter as Router} from 'react-router-dom';
 // import {StateProvider} from './store/context/ContextManager';
 import store from './store/redux';

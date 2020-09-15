@@ -2,13 +2,15 @@
 	"files.exclude": {
 		"package.json": true,
 		"public": true,
-		"**/db": true,
+		// "**/db": true,
 		"**/Https": true,
 		"**/util": true,
 		"**/Partials": true,
 		"**/images": true,
-		"*/index.js": true,
+		// "*/index.js": true,
 		"*/index.css": true,
+		"*/App.module.css": true,
+
 		".gitignore": true,
 		".gitattributes": true,
 		"node_modules": true,

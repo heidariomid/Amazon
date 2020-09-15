@@ -1,5 +1,5 @@
 import {all} from 'redux-saga/effects';
-import {fetchProductWatcher} from './productSaga';
+import {addToBasketWatcher, removeToBasketWatcher} from './productSaga';
 export default function* middlewares() {
-	yield all([fetchProductWatcher()]);
+	yield all([addToBasketWatcher(), removeToBasketWatcher()]);
 }

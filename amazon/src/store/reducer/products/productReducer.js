@@ -11,6 +11,15 @@ const reducer = (productState, action) => {
 		case actions.ADD_PRODUCT_FAILED:
 			result = {...productState, hasError: true, errorMessages: action.payload.messages};
 			break;
+		case actions.REMOVE_PRODUCT_SUCCESS:
+			const index = productState.items.findIndex((item) => item.id === action.payload.id);
+			let newBasket = [...productState.items];
+			index >= 0 ? newBasket.splice(index, 1) : console.warn(`Cant remove product (id: ${action.payload.id})`);
+			result = {...productState, items: newBasket};
+			break;
+		case actions.REMOVE_PRODUCT_FAILED:
+			result = {...productState, hasError: true, errorMessages: action.payload.messages};
+			break;
 		default:
 			result = productState;
 			break;

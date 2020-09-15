@@ -1,12 +1,10 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import routes from './routes';
-import Header from '../Components/Header/Header';
 import ErrorBoundry from '../Components/Error/ErrorBoundry';
 const PublicRoute = (
 	<div className="app">
 		<ErrorBoundry>
-			<Header />
 			<Switch>
 				{routes.map(({component: Component, path, ...rest}, index) => {
 					return <Route key={index} {...rest} path={path} render={(props) => <Component {...props} />} />;
