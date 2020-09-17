@@ -5,8 +5,15 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styles from './Header.module.css';
+import {auth} from '../../db/firebase';
 import cx from 'classnames';
-const Header = ({basket}) => {
+const Header = ({basket, user}) => {
+	const handleAuthenticaton = () => {
+		if (user) {
+			auth.signOut();
+		}
+	};
+
 	return (
 		<div className={styles.header}>
 			<Link to="/">
@@ -16,11 +23,11 @@ const Header = ({basket}) => {
 				<input className={styles.search_input} type="text" />
 				<SearchIcon className={styles.search_icon} />
 			</div>
-			<div className={styles.nav}>
-				<Link to="/auth/login">
+			<div className={styles.nav} onClick={handleAuthenticaton}>
+				<Link to={!user && '/auth/login'}>
 					<div className={styles.nav_options}>
-						<span className={styles.nav_title_1}>Hello</span>
-						<span className={styles.nav_title_2}>Sign in</span>
+						<span className={styles.nav_title_1}>Hello {!user ? 'Guest' : user.email}</span>
+						<span className={styles.nav_title_2}>{user ? 'Sign Out' : 'Sign In'}</span>
 					</div>
 				</Link>
 				<div className={styles.nav_options}>
@@ -32,7 +39,7 @@ const Header = ({basket}) => {
 					<span className={styles.nav_title_2}>Prime</span>
 				</div>
 			</div>
-			<Link to="/chekout">
+			<Link to="/checkout">
 				<div className={styles.header_basket}>
 					<ShoppingBasketIcon />
 					<span className={cx(styles.nav_title_2, styles.header_basket_count)}>{basket.length}</span>
@@ -42,5 +49,5 @@ const Header = ({basket}) => {
 	);
 };
 
-const State = (state) => ({basket: state.products.items, messages: state.products.messages, errorMessages: state.products.errorMessages});
+const State = (state) => ({basket: state.products.items, user: state.users.user});
 export default connect(State)(Header);

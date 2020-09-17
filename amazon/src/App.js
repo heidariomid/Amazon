@@ -3,19 +3,30 @@ import {actions} from './store/actions';
 import {app} from './App.module.css';
 import {connect} from 'react-redux';
 import Components from './routes/router';
+import {auth} from './db/firebase';
 
-const App = ({fetchProduct}) => {
+const App = ({fetchUser}) => {
 	useEffect(() => {
-		fetchProduct({messages: 'Redux is Connected'});
-	}, [fetchProduct]);
+		auth.onAuthStateChanged((authUser) => {
+			if (authUser) {
+				fetchUser({
+					user: authUser,
+				});
+			} else {
+				fetchUser({
+					user: null,
+				});
+			}
+		});
+	}, [fetchUser]);
 	return <div className={app}>{Components}</div>;
 };
 
 const Dispatch = (dispatch) => {
 	return {
-		fetchProduct: (payload) => {
+		fetchUser: (payload) => {
 			dispatch({
-				type: actions.FETCH_PRODUCT,
+				type: actions.FETCH_USER,
 				payload,
 			});
 		},

@@ -17,7 +17,6 @@ ReactDOM.render(
 				{/* </StateProvider> */}
 			</Provider>
 		</Router>
-		,
 	</React.StrictMode>,
 	document.getElementById('root'),
 );
