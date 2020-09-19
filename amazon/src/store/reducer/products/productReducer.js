@@ -1,7 +1,7 @@
 import {actions} from '../../actions';
 
 // product: {items: [], messages: '', hasError: false, errorMessages: ''},
-
+export const total = (basket) => basket?.reduce((a, b) => b.price + a, 0);
 const reducer = (productState, action) => {
 	let result = productState;
 	switch (action.type) {

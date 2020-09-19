@@ -7,17 +7,20 @@ import Payment from '../Components/Payment/Payment';
 import Login from '../Components/Auth/Login';
 import Header from '../Components/Header/Header';
 import Product from '../Components/Product/Products';
+import {loadStripe} from '@stripe/stripe-js';
+import {Elements} from '@stripe/react-stripe-js';
+import Orders from '../Components/Orders/Orders';
 
+const promise = loadStripe('pk_test_51HSQFEEMAc5fqet6VH567jyWYJM5CA6jrKmjunlaNU0MNjbmytwUlw9ND4GutQpQB0FHIvW1dXc0r4EUSGzAgGBv00Y9L6Hjmm');
 const PublicRoute = (
-	<div className="app">
+	<>
 		<ErrorBoundry>
 			<Switch>
-				<Route path="/payment">
-					<Header />
-					<Payment />
-				</Route>
 				<Route path="/auth/login">
 					<Login />
+				</Route>
+				<Route path="/orders">
+					<Orders />
 				</Route>
 				<Route path="/checkout">
 					<Header />
@@ -25,7 +28,9 @@ const PublicRoute = (
 				</Route>
 				<Route path="/payment" exact={true}>
 					<Header />
-					<Payment />
+					<Elements stripe={promise}>
+						<Payment />
+					</Elements>
 				</Route>
 				<Route path="/" exact={true}>
 					<Header />
@@ -36,6 +41,6 @@ const PublicRoute = (
 				</Route>
 			</Switch>
 		</ErrorBoundry>
-	</div>
+	</>
 );
 export default PublicRoute;

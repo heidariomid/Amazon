@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {actions} from '../../store/actions';
 import {product, product_info, product_title, product_price, product_star, product_img} from './Product.module.css';
 import {product_checkout, product_info_checkout, product_title_checkout, product_price_checkout, product_star_checkout, product_img_checkout} from './CheckoutProduct.module.css';
-const Product = ({checkout, addProduct, removeProduct, id, title = 'No Title Available', price = '-', star = 0, image = NoCover}) => {
+const Product = ({checkout, hideBtn, addProduct, removeProduct, id, title = 'No Title Available', price = '-', star = 0, image = NoCover}) => {
 	const addToBasket = () => {
 		addProduct({
 			id,
@@ -31,7 +31,7 @@ const Product = ({checkout, addProduct, removeProduct, id, title = 'No Title Ava
 				</div>
 			</div>
 			<img className={product_img} src={image} alt="book" />
-			<button onClick={addToBasket}>Add to Basket</button>
+			{!hideBtn && <button onClick={addToBasket}>Add to Basket</button>}
 		</div>
 	) : (
 		<div className={product_checkout}>
